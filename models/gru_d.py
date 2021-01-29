@@ -105,11 +105,11 @@ class Model(nn.Module):
     def build(self):
         self.rnn_cell = nn.LSTMCell(self.NUM_FEATURES * 2, self.rnn_hid_size)
 
-        # self.temp_decay_h = TemporalDecay(input_size = self.NUM_FEATURES, output_size = self.rnn_hid_size, diag = False)
-        # self.temp_decay_x = TemporalDecay(input_size = self.NUM_FEATURES, output_size = self.NUM_FEATURES, diag = True)
+        self.temp_decay_h = TemporalDecay(input_size = self.NUM_FEATURES, output_size = self.rnn_hid_size, diag = False)
+        self.temp_decay_x = TemporalDecay(input_size = self.NUM_FEATURES, output_size = self.NUM_FEATURES, diag = True)
 
-        # self.hist_reg = nn.Linear(self.rnn_hid_size, self.NUM_FEATURES)
-        # self.feat_reg = FeatureRegression(self.NUM_FEATURES)
+        self.hist_reg = nn.Linear(self.rnn_hid_size, self.NUM_FEATURES)
+        self.feat_reg = FeatureRegression(self.NUM_FEATURES)
 
         self.weight_combine = nn.Linear(self.NUM_FEATURES * 2, self.NUM_FEATURES)
 
