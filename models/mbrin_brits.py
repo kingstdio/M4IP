@@ -32,8 +32,9 @@ class Model(nn.Module):
         self.build()
 
     def build(self):
-        self.rits_f = rits.Model(self.rnn_hid_size, self.impute_weight, self.label_weight, self.NUM_FEATURES)
-        self.rits_b = rits.Model(self.rnn_hid_size, self.impute_weight, self.label_weight, self.NUM_FEATURES)
+
+        # self.rits_f = rits.Model(self.rnn_hid_size, self.impute_weight, self.label_weight, self.NUM_FEATURES)
+        # self.rits_b = rits.Model(self.rnn_hid_size, self.impute_weight, self.label_weight, self.NUM_FEATURES)
 
     def forward(self, data):
         ret_f = self.rits_f(data, 'forward')
